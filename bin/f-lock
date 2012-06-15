@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require './f-lock'
+
+z_name = ARGV[0]
+c_name = ARGV[1]
+
+Monitor.run(z_name, c_name, DB.lock_endpoint)
