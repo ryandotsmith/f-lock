@@ -7,8 +7,8 @@ require 'pg'
 
 Scrolls::Log.start
 
-# Usage: Monitor.run("shushud-partitioned.net", "service", DB.lock_endpoint)
 $running = true
+
 module Monitor
   extend self
   def run(z_name, c_name, endpoint)
@@ -36,6 +36,7 @@ module DNS
   extend self
 
   def empty?(z_name)
+    Log.puts(ns: "dns", fn: __method__, z_name: z_name, endpoint: endpoint)
     endpoints(z_name).empty?
   end
 
@@ -46,7 +47,7 @@ module DNS
 
   def create(z_name, c_name, endpoint)
     n = [c_name, ".", z_name].join
-    Log.puts(fn: __method__, name: n, ident: ENV["CLOUD"]) do
+    Log.puts(ns: "dns", fn: __method__, name: n, ident: ENV["CLOUD"]) do
       Route53::DNSRecord.
         new(n,"CNAME","0", [endpoint], zone(z_name), nil, 1, ENV["CLOUD"]).
         create
@@ -54,7 +55,7 @@ module DNS
   end
 
   def delete(z_name, endpoint)
-    Log.puts(fn: __method__) do
+    Log.puts(ns: "dns", fn: __method__, z_name: z_name, endpoint: endpoint) do
       endpoints(z_name).select do |e|
         e.values.include?(endpoint)
       end.map do |r|
@@ -64,12 +65,14 @@ module DNS
   end
 
   def endpoints(z_name)
-    zone(z_name).get_records.select {|r| r.type == "CNAME"}
+    Log.puts(ns: "dns", fn: __method__, z_name: z_name) do
+      zone(z_name).get_records.select {|r| r.type == "CNAME"}
+    end
   end
 
   def zone(z_name)
     @zone ||= conn.get_zones.find {|z| z.name == z_name}.tap do |z|
-      raise "Unable to find zone" unless z
+      raise "Unable to find zone=#{z_name}" unless z
     end
   end
 
@@ -151,11 +154,11 @@ end
 module Log
   def self.puts(data)
     if block_given?
-      Scrolls.log({:app => :blk_rvr}.merge(data)) do
+      Scrolls.log({:app => "f-lock"}.merge(data)) do
         yield
       end
     else
-      Scrolls.log({:app => :blk_rvr}.merge(data))
+      Scrolls.log({:app => "f-lock"}.merge(data))
     end
   end
 end
