@@ -17,6 +17,8 @@ F-lock requires a couple of moving parts --sigh.
 * Your application
 * Desire for availability
 
+### Topology
+
 ![img](http://f.cl.ly/items/0a2v0F2a2y0E442X123e/arch.png)
 
 ## Usage
