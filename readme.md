@@ -9,4 +9,21 @@ into a standby service.
 
 ## Arch
 
+F-lock requires a couple of moving parts --sigh.
+
+* Amazon's Route53
+* Apex domain access
+* 2 or more independent platforms
+* Your application
+* Desire for availability
+
 ![img](http://f.cl.ly/items/1Y3L0G1u452z2a1p3E2A/arch.png)
+
+## Usage
+
+```bash
+$ export AWS_ACCESS=key
+$ export AWS_SECRET=secret
+$ export CLOUD=primary
+$ bin/f-lock ha.com. app
+```
