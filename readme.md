@@ -26,6 +26,7 @@ F-lock requires a couple of moving parts --sigh.
 ```bash
 $ export AWS_ACCESS=key
 $ export AWS_SECRET=secret
+$ export AWS_API_V=2012-02-29
 $ export CLOUD=primary
 $ bin/f-lock ha.com. app
 ```
