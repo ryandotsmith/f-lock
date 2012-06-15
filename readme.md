@@ -17,7 +17,7 @@ F-lock requires a couple of moving parts --sigh.
 * Your application
 * Desire for availability
 
-![img](http://f.cl.ly/items/1Y3L0G1u452z2a1p3E2A/arch.png)
+![img](http://f.cl.ly/items/0a2v0F2a2y0E442X123e/arch.png)
 
 ## Usage
 
