@@ -1,4 +1,4 @@
-require './blk_rvr'
+require './f-lock'
 
 z_name = "shushud-partitioned.net."
 c_name = "service"
