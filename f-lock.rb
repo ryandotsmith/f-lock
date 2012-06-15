@@ -36,7 +36,7 @@ module DNS
   extend self
 
   def empty?(z_name)
-    Log.puts(ns: "dns", fn: __method__, z_name: z_name, endpoint: endpoint)
+    Log.puts(ns: "dns", fn: __method__, z_name: z_name)
     endpoints(z_name).empty?
   end
 
