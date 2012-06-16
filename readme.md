@@ -1,6 +1,6 @@
 # f-lock
 
-Much like the whims of a wild river, unexpected events can cause internet services to fail in catastrophic ways. Civil engineers tame rivers, like the Mississippi, by employing a variety of methods to protect against catastrophe -- one of these methods involves building locks to quickly redirect the flow of water to another channel.
+Much like the whims of a wild river, unexpected events can cause internet services to fail in catastrophic ways. Civil engineers tame rivers, like the Mississippi, by employing a variety of methods to protect against catastrophe -- one of these methods involves building locks to quickly redirect the flow of water to another channel. Similarly, in the event of an internet service catastrophy, f-lock will block flow into the failed service.
 
 ## Arch
 
