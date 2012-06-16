@@ -14,7 +14,7 @@ F-lock requires a couple of moving parts --sigh.
 
 ### Topology
 
-![img](http://f.cl.ly/items/0a2v0F2a2y0E442X123e/arch.png)
+![img](http://f.cl.ly/items/3t1E031V0E1n3t2U1v2e/arch.png)
 
 ## Usage
 
