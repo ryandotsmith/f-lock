@@ -24,8 +24,10 @@ module Monitor
         end
       else
         Log.puts(fn: __method__, at: "endpoint-up")
-        if !DNS.include?(z_name, endpoint["name"])
-          DNS.create(z_name, c_name, endpoint["name"])
+        DB.lock_zone(z_name) do
+          if !DNS.include?(z_name, endpoint["name"])
+            DNS.create(z_name, c_name, endpoint["name"])
+          end
         end
       end
     end
